@@ -165,7 +165,7 @@ RCT_EXPORT_METHOD(start:(NSString *)mediaType
     }
 
     if ([_media isEqualToString:@"audio"]) {
-        [self startProximitySensor];
+        //[self startProximitySensor];
     }
     [self setKeepScreenOn:YES];
     _audioSessionInitialized = YES;
@@ -188,7 +188,7 @@ RCT_EXPORT_METHOD(stop:(NSString *)busytoneUriType)
         NSLog(@"RNInCallManager.stop(): stop InCallManager");
         [self restoreOriginalAudioSetup];
         [self stopBusytone];
-        [self stopProximitySensor];
+        //[self stopProximitySensor];
         [self audioSessionSetActive:NO
                             options:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation
                          callerMemo:NSStringFromSelector(_cmd)];
@@ -563,7 +563,7 @@ RCT_EXPORT_METHOD(getIsWiredHeadsetPluggedIn:(RCTPromiseResolveBlock)resolve
         overrideAudioPortString = @".Speaker";
         if ([_media isEqualToString:@"video"]) {
             audioMode = AVAudioSessionModeVideoChat;
-            [self stopProximitySensor];
+            //[self stopProximitySensor];
         }
     } else if (_forceSpeakerOn == -1) {
         // --- force off
@@ -571,14 +571,14 @@ RCT_EXPORT_METHOD(getIsWiredHeadsetPluggedIn:(RCTPromiseResolveBlock)resolve
         overrideAudioPortString = @".None";
         if ([_media isEqualToString:@"video"]) {
             audioMode = AVAudioSessionModeVoiceChat;
-            [self startProximitySensor];
+            //[self startProximitySensor];
         }
     } else { // use default behavior
         overrideAudioPort = AVAudioSessionPortOverrideNone;
         overrideAudioPortString = @".None";
         if ([_media isEqualToString:@"video"]) {
             audioMode = AVAudioSessionModeVideoChat;
-            [self stopProximitySensor];
+            //[self stopProximitySensor];
         }
     }
 
